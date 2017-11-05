@@ -2,8 +2,8 @@ FROM ubuntu:16.04
 
 # Build essentials
 RUN apt-get update \
-  && apt-get install autotools-dev autoconf automake \
-  && apt-get install python3 python3-pip curl git sudo cron -y \
+  && apt-get install -y autotools-dev autoconf automake \
+  && apt-get install -y python3 python3-pip curl git sudo cron \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 # RUN apt-get install -y curl build-essential
