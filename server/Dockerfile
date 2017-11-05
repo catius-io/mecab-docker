@@ -20,8 +20,8 @@ RUN ./configure  --enable-utf8-only \
 
 # mecab-ko-dic
 WORKDIR /opt/mecab
-RUN curl -fsSL https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic-2.0.3-20170922.tar.gz |tar - \
-  && mv mecab-ko-dic-2.0.3.20170922 mecab-ko-dic
+RUN curl -fsSL https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic-2.0.3-20170922.tar.gz |tar xvz
+RUN mv mecab-ko-dic-2.0.3.20170922 mecab-ko-dic
 WORKDIR /opt/mecab/mecab-ko-dic
 RUN ./autogen.sh \
   && ./configure --with-charset=utf8 \
