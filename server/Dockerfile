@@ -31,8 +31,7 @@ RUN make install
 RUN echo "dicdir = /usr/local/lib/mecab/dic/mecab-ko-dic" > /usr/local/etc/mecabrc
 
 # Clean up
-# RUN apt-get remove -y build-essential
-# COPY . /opt/api
+COPY . /opt/api
 WORKDIR /opt/api
 RUN pip3 install -r requirements.txt
 
