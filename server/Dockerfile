@@ -24,9 +24,9 @@ RUN curl -fsSL https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic
 RUN mv mecab-ko-dic-2.0.3-20170922 mecab-ko-dic
 WORKDIR /opt/mecab/mecab-ko-dic
 RUN ./autogen.sh \
-  && ./configure --with-charset=utf8 \
-  && make \
-  && make install \
+  && ./configure --with-charset=utf8
+RUN make
+RUN make install
 
 RUN echo "dicdir = /usr/local/lib/mecab/dic/mecab-ko-dic" > /usr/local/etc/mecabrc
 
