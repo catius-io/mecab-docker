@@ -1,8 +1,8 @@
 FROM ubuntu:16.04
 
 # Build essentials
-RUN apt-get update
 RUN apt-get update \
+  && apt-get install aclocal autoconf automake \
   && apt-get install python3 python3-pip curl git sudo cron -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
