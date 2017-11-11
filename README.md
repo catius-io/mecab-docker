@@ -1,7 +1,3 @@
-
-$ docker pull hephaex/komecab
-$ docker run -i -t hephaex/komecab komecab
-
 # MeCab Web server
 
 docker-compose로 사용할 수 있는 mecab 서비스
@@ -10,17 +6,6 @@ docker-compose로 사용할 수 있는 mecab 서비스
     - MeCab를 이용할 수 있는 RESTful 서버
     - 세종사전과 새로운 사전 mecab-nia-dic를 선택할 수 있음(TBD)
 
-## 폴더 구성
-```
-.
-├── README.md
-├── docker-compose.yml
-└─server-komecab
-    ├── Dockerfile
-    ├── requirements.txt
-    └── server.py
-
-```
 
 ## 동작/종료 방법
 ```shell-session
@@ -74,4 +59,16 @@ $ curl -X POST http://localhost:5000/mecab/v1/parse-nia-dic \
 
 ```
 #TBD 결과를 붙여 넣자
+```
+
+## 폴더 구성
+```
+.
+├── README.md
+├── docker-compose.yml
+└─server-komecab
+    ├── Dockerfile
+    ├── requirements.txt
+    └── server.py
+
 ```
