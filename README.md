@@ -8,9 +8,18 @@ docker-compose로 사용할 수 있는 mecab 서비스
 
 
 ## 동작/종료 방법
+
+* container build
+```shell-session
+$ docker-compose build
+```
+
+* container run
 ```shell-session
 $ docker-compose up -d
 ```
+
+* container stop
 ```shell-session
 $ docker-compose down
 ```
