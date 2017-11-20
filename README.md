@@ -4,7 +4,6 @@ docker-compose로 사용할 수 있는 mecab 서비스
 
 * server-komecab
     - MeCab를 이용할 수 있는 RESTful 서버
-    - 세종사전과 새로운 사전 mecab-nia-dic를 선택할 수 있음(TBD)
 
 
 ## 동작/종료 방법
@@ -29,7 +28,6 @@ HTTP request
 
 ```
 POST /mecab/v1/parse-ko-dic
-POST /mecab/v1/parse-nia-dic
 ```
 
 request header
@@ -95,68 +93,4 @@ $ curl -X POST http://localhost:5000/mecab/v1/parse-ko-dic \
    ],
    "STATUS": 200
 }
-```
-
-## 실행 예시 mecab-nia-dic
-mecab-nia-dic은 NIA 말뭉치사전을 실행
-
-```shell-session
-$ curl -X POST http://localhost:5000/mecab/v1/parse-nia-dic \
-       -H "Content-type: application/json" \
-       -d '{"sentence": "함수형 프로그래밍"}'  | jq .
-```
-
-```
-{
-  "DICT": "KO-DIC",
-  "MESSAGE": "SUCCESS",
-  "RESULTS": [
-    {
-      " ": "*",
-      "원형": "*",
-      "품사": "NNG",
-      "품사-세분류1": "*",
-      "품사-세분류2": "F",
-      "품사-세분류3": "함수",
-      "형태소": "함수",
-      "활용구": "*",
-      "활용형": "*"
-    },
-    {
-      " ": "*",
-      "원형": "*",
-      "품사": "XSN",
-      "품사-세분류1": "*",
-      "품사-세분류2": "T",
-      "품사-세분류3": "형",
-      "형태소": "형",
-      "활용구": "*",
-      "활용형": "*"
-     },
-     {
-       " ": "*",
-       "원형": "*",
-       "품사": "NNG",
-       "품사-세분류1": "*",
-       "품사-세분류2": "T",
-       "품사-세분류3": "프로그래밍",
-       "형태소": "프로그래밍",
-       "활용구": "*",
-       "활용형": "*"
-     }
-   ],
-   "STATUS": 200
-}
-```
-
-## 폴더 구성
-```
-.
-├── README.md
-├── docker-compose.yml
-└─server-komecab
-    ├── Dockerfile
-    ├── requirements.txt
-    └── server.py
-
 ```
