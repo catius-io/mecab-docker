@@ -1,5 +1,6 @@
 FROM ubuntu:16.04
 
+MAINTAI
 # Build essentials
 RUN apt-get update \
   && apt-get install -y autotools-dev autoconf automake \
