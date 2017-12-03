@@ -37,5 +37,4 @@ WORKDIR /opt/api
 RUN pip3 install -U pip setuptools
 RUN pip3 install -r requirements.txt
 
-COPY test.txt .
 CMD ["python3", "server.py"]
