@@ -1,18 +1,18 @@
-# MeCab Web server
-
-docker-compose로 사용할 수 있는 mecab 서비스
-
+# MeCab Web serice
+* 한국어를 RESTful API로 이용하여 형태소 분석해 주는 서비스
+ - ᆰ형태소 분석기 Mecab 을 컨테이너로 구성
+ - 컨테이너 실행 도구 docker-compose로 손쉬운 사용
 * server-komecab
-    - MeCab를 이용할 수 있는 RESTful 서버
+    - MeCab를 이용할 수 있는 RESTful 서비스
 
 
-## 동작/종료 방법
-
+## 형태소 분석을 위한 컨데이서 서비스 만들기
 * container build
 ```shell-session
 $ docker-compose build
 ```
 
+## 형태소 분석 서비스 실행/종료
 * container run
 ```shell-session
 $ docker-compose up -d
@@ -23,18 +23,12 @@ $ docker-compose up -d
 $ docker-compose down
 ```
 
-## 실행방법
+## 형태소 분석 RESTful API 실행방법
 HTTP request
-
-```
-POST /mecab/v1/parse-ko-dic
-```
+> POST /mecab/v1/parse-ko-dic
 
 request header
-
-```
-Content-Type: application/json
-```
+> Content-Type: application/json
 
 request body
 
@@ -44,13 +38,15 @@ request body
 }
 ```
 
-## 실행 예시 1.세종말뭉치
+### 실행 예시
+실행
 ```shell-session
 $ curl -X POST http://localhost:5000/mecab/v1/parse-ko-dic \
        -H "Content-type: application/json" \
        -d '{"sentence": "함수형 프로그래밍"}'  | jq .
 ```
 
+결과
 
 ```
 {
