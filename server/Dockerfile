@@ -1,13 +1,13 @@
-FROM ubuntu:16.04
+FROM hephaex/ubuntu
+#FROM ubuntu:16.04
 
-MAINTAI
+MAINTAINER Mario Cho <hephaex@gmail.com>
 # Build essentials
 RUN apt-get update \
   && apt-get install -y autotools-dev autoconf automake \
   && apt-get install -y python3 python3-pip curl git sudo cron \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
-
 
 # Mecab
 WORKDIR /opt
@@ -17,6 +17,7 @@ RUN ./configure  --enable-utf8-only \
   && make \
   && make check \
   && make install \
+#  && ldconfigcd mecab/mecab
   && ldconfig
 
 # mecab-ko-dic
@@ -34,7 +35,7 @@ RUN echo "dicdir = /usr/local/lib/mecab/dic/mecab-ko-dic" > /usr/local/etc/mecab
 # Clean up
 COPY . /opt/api
 WORKDIR /opt/api
-RUN pip3 instal -U pip setuptools
+RUN pip3 install -U pip setuptools
 RUN pip3 install -r requirements.txt
 
 COPY test.txt .
