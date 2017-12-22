@@ -1,5 +1,4 @@
 FROM hephaex/ubuntu
-#FROM ubuntu:16.04
 
 MAINTAINER Mario Cho <hephaex@gmail.com>
 # Build essentials
@@ -9,7 +8,7 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-# Mecab
+# build mecab
 WORKDIR /opt
 RUN git clone https://github.com/hephaex/mecab.git
 WORKDIR /opt/mecab/mecab
@@ -17,10 +16,9 @@ RUN ./configure  --enable-utf8-only \
   && make \
   && make check \
   && make install \
-#  && ldconfigcd mecab/mecab
   && ldconfig
 
-# mecab-ko-dic
+# build mecab-ko-dic
 WORKDIR /opt/mecab
 RUN curl -fsSL https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic-2.0.3-20170922.tar.gz |tar xvz
 RUN mv mecab-ko-dic-2.0.3-20170922 mecab-ko-dic
@@ -32,7 +30,7 @@ RUN make install
 
 RUN echo "dicdir = /usr/local/lib/mecab/dic/mecab-ko-dic" > /usr/local/etc/mecabrc
 
-# Clean up
+# ready mecab service
 COPY . /opt/api
 WORKDIR /opt/api
 RUN pip3 install -U pip setuptools
