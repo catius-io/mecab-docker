@@ -1,6 +1,6 @@
 FROM hephaex/ubuntu
-
 MAINTAINER Mario Cho <hephaex@gmail.com>
+
 # Build essentials
 RUN apt-get update \
   && apt-get install -y autotools-dev autoconf automake \
@@ -31,8 +31,8 @@ RUN make install
 RUN echo "dicdir = /usr/local/lib/mecab/dic/mecab-ko-dic" > /usr/local/etc/mecabrc
 
 # ready mecab service
-COPY . /opt/api
-WORKDIR /opt/api
+COPY . /opt/mecab/api
+WORKDIR /opt/mecab/api
 RUN pip3 install -U pip setuptools
 RUN pip3 install -r requirements.txt
 
