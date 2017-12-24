@@ -1,4 +1,4 @@
-api:
+Mecab-ko:
   build: ./server
   volumes:
     - "./server:/opt/api"
